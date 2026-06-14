@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Archive</title>
+    <style>
+        /* Mengatur background dan posisi ke tengah layar */
+        body {
+            background-color: #fce4ec; /* Warna pink muda */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Biar halamannya nggak bisa di-scroll */
+        }
+
+        /* Kotak pembungkus biar posisi elemennya rapi */
+        .landing-container {
+            position: relative;
+            width: 600px;
+            height: 500px;
+        }
+
+        /* INI KUNCI ANIMASINYA: Dari bawah (Y: 40px) dan transparan, naik ke atas dan jelas */
+        @keyframes fadeInUp {
+            0% { 
+                opacity: 0; 
+                transform: translateY(40px) scale(var(--scale, 1)) rotate(var(--rotate, 0deg)); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(var(--scale, 1)) rotate(var(--rotate, 0deg)); 
+            }
+        }
+
+        /* Tombol Click Here (Muncul Paling Pertama) */
+        .btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%); /* Biar persis di tengah bawah */
+            background-color: #ff99cc;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            opacity: 0; /* Awalnya ngilang */
+            /* Animasi jalan selama 0.8 detik, delay 0.5 detik */
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.5s; 
+        }
+
+        /* Bintang-bintang */
+        .star {
+            position: absolute;
+            color: #d8005f; /* Warna pink tua */
+            font-size: 50px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Foto Tengah (Muncul bareng bintang tengah) */
+        .center-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px; /* Ganti ukuran fotomu di sini */
+            margin-top: -120px; /* Menyesuaikan biar ke tengah */
+            margin-left: -100px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 2s; /* Delay foto */
+        }
+
+        /* URUTAN BINTANG (Satu per satu dari bawah ke atas) */
+        /* --scale untuk atur ukuran, --rotate untuk miringnya, animation-delay untuk antrian munculnya */
+        
+        /* Bintang Bawah (Muncul ke-2) */
+        .s1 { bottom: 80px; left: 100px;  --scale: 0.7; --rotate: -20deg; animation-delay: 1s; }
+        .s2 { bottom: 100px; right: 120px; --scale: 1.2; --rotate: 15deg;  animation-delay: 1.3s; }
+        
+        /* Bintang Tengah (Muncul ke-3 bareng foto) */
+        .s3 { top: 220px; left: 60px;   --scale: 0.9; --rotate: -45deg; animation-delay: 1.8s; }
+        .s4 { top: 200px; right: 80px;  --scale: 0.6; --rotate: 30deg;  animation-delay: 2.1s; }
+        
+        /* Bintang Atas (Muncul Terakhir) */
+        .s5 { top: 60px; left: 140px;  --scale: 1.5; --rotate: 25deg;  animation-delay: 2.5s; }
+        .s6 { top: 40px; right: 160px; --scale: 0.8; --rotate: -10deg; animation-delay: 2.8s; }
+
+    </style>
+</head>
+<body>
+
+    <div class="landing-container">
+        <div class="star s5">★</div>
+        <div class="star s6">★</div>
+
+        <div class="star s3">★</div>
+        <div class="star s4">★</div>
+
+        <img src="cover-image,.png" alt="Keychain" class="center-img" />
+
+        <div class="star s1">★</div>
+        <div class="star s2">★</div>
+
+        <button class="btn">click here</button>
+    </div>
+
+</body>
+</html>
